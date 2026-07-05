@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CrewSpace</string>
+    <string name="title_activity_main">CrewSpace</string>
+    <string name="package_name">com.crewspace.app</string>
+    <string name="custom_url_scheme">com.crewspace.app</string>
+</resources>

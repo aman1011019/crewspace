@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0B0B0F;
+  --color-primary: #8B5CF6;
+  --color-secondary: #A855F7;
+  --color-success: #22C55E;
+  --color-danger: #EF4444;
+  --color-card-bg: rgba(255, 255, 255, 0.04);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-text-secondary: #B3B3B3;
+  --color-nav-bg: rgba(13, 13, 18, 0.6);
+
+  --font-display: "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
+
+  --animate-pulse-glow: pulse-glow 2s infinite ease-in-out;
+  --animate-float: float 6s infinite ease-in-out;
+  --animate-shimmer: shimmer 2.5s infinite linear;
+  --animate-scan: scan 2s infinite ease-in-out;
+  --animate-gradient-mesh: gradient-mesh 15s infinite alternate ease-in-out;
+  --animate-ticker: ticker 25s linear infinite;
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.6;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+    }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes scan {
+    0%, 100% { top: 0%; opacity: 0.3; }
+    50% { top: 100%; opacity: 1; }
+  }
+  @keyframes gradient-mesh {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 50% 100%; }
+    100% { background-position: 100% 0%; }
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+/* Custom Base Styles */
+html, body {
+  background-color: #0B0B0F;
+  color: #FFFFFF;
+  font-family: "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Segoe UI", Arial, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+}
+
+/* Premium Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 11, 15, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  transition: all 0.3s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.4);
+}
+
+/* Glassmorphism Class Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-nav {
+  background: rgba(11, 11, 15, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-premium {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-purple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(168, 85, 247, 0.02) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* Hover glow effects */
+.hover-glow {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-glow:hover {
+  transform: translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
+}
+
+.glow-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s;
+  pointer-events: none;
+}
+.glow-btn:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+.glow-btn:hover {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  transform: scale(1.02);
+}
+
+/* Ambient gradient background mesh */
+.gradient-mesh-bg {
+  background-color: #0b0b0f;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
+  background-size: 200% 200%;
+}
+
+/* Print Styles for Certificate Download */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .certificate-print, .certificate-print * {
+    visibility: visible;
+  }
+  .certificate-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0B0B0F !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* --- PREMIUM TECHWEAR/SPOTIFY DESIGN ACCENTS --- */
+/* Custom card stack visual overlays */
+.card-stack-deck {
+  position: relative;
+}
+
+.card-tilted-stack {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color 0.3s;
+}
+
+.card-tilted-stack:hover {
+  transform: translateY(-8px) scale(1.03) rotate(0deg) !important;
+  z-index: 20 !important;
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.25) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Neon glow box shadows */
+.shadow-neon-purple {
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.15), 0 0 15px rgba(139, 92, 246, 0.15);
+}
+
+.shadow-neon-magenta {
+  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.15), 0 0 15px rgba(168, 85, 247, 0.15);
+}
+
+.shadow-neon-lime {
+  box-shadow: 0 8px 32px 0 rgba(212, 241, 83, 0.15), 0 0 15px rgba(212, 241, 83, 0.15);
+}
+
+/* Glassmorphism pill styling */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "6574294421",
+    "firebase_url": "https://crew-space-ab439-default-rtdb.firebaseio.com",
+    "project_id": "crew-space-ab439",
+    "storage_bucket": "crew-space-ab439.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6574294421:android:bad9e77df6f10fe5c1629c",
+        "android_client_info": {
+          "package_name": "com.crewspace.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6574294421-6klcd3kl7p7ju02co35qebimlm3nuo4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ2jHoXSw77qPdZaSn4QSMDMr8ItHjf1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6574294421-6klcd3kl7p7ju02co35qebimlm3nuo4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
