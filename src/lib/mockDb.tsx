@@ -223,9 +223,9 @@ const DEFAULT_EVENT: HackathonEvent = {
   id: ACTIVE_EVENT_ID,
   name: "Talent Hunt 2K26 Vynedam",
   venue: "Mallareddy University",
-  date: "July 4, 2026",
-  countdown: "31:00:00",
-  endTime: Date.now() + 31 * 3600 * 1000,
+  date: "July 5, 2026",
+  countdown: "10:00:00",
+  endTime: new Date("2026-07-05T19:00:00+05:30").getTime(),
   status: "LIVE",
   stage: "HACKING",
   progressPercent: 64.5,
@@ -233,7 +233,7 @@ const DEFAULT_EVENT: HackathonEvent = {
   joinCode: "HACKFEST2026",
   joinUrl: getJoinUrl(ACTIVE_EVENT_ID),
   stats: {
-    teams: 24,
+    teams: 300,
     participants: 120,
     connections: 45,
     posts: 4,
@@ -716,6 +716,14 @@ export const MockDbProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
     const unsubscribe: Array<() => void> = [];
 
+    // Force sync the correct end time and total teams to Firebase for the demo
+    const targetEndTime = new Date("2026-07-05T19:00:00+05:30").getTime();
+    updateDoc(doc(services.db, "events", ACTIVE_EVENT_ID), {
+      endTime: targetEndTime,
+      "stats.teams": 300
+    }).catch(() => undefined);
+    realtimeSet(realtimeRef(services.rtdb, `live/events/${ACTIVE_EVENT_ID}/endTime`), targetEndTime).catch(() => undefined);
+    realtimeSet(realtimeRef(services.rtdb, `live/events/${ACTIVE_EVENT_ID}/stats/teams`), 300).catch(() => undefined);
     unsubscribe.push(
       onSnapshot(
         doc(services.db, "events", ACTIVE_EVENT_ID),
